@@ -57,12 +57,27 @@ public class LocaterAlma {
         Locator cancelButton = page.getByTestId("modal").getByTestId("button").first();
         cancelButton.click();
 
-        page.setViewportSize(width,height);
-       // Thread.sleep(3000);
+        //getByAllText
+        Locator beverage1 = page.getByAltText("Su & İcecek");
 
-       // page.close();
-        //browser.close();
-       // playwright.close();
+        //getByText and filter options
+        Locator beverage2 = page.getByTestId("text").filter(new Locator.FilterOptions().setHasText("Su & İçecek"));
+        System.out.println("6. beverage " + beverage2.innerText());
+
+        Thread.sleep(3000);
+
+        // css and filtet options
+        Locator beverage3 = page.locator("div").filter(new Locator.FilterOptions().setHasText("Su & İcecek"));
+        Locator beverage4 = page.locator(".sc-b6b4847f-> .sc-6df7862-1").filter(new Locator.FilterOptions().setHasText("Su & İcecek"));
+
+        beverage4.click();
+
+        page.setViewportSize(width,height);
+        Thread.sleep(3000);
+
+        page.close();
+        browser.close();
+        playwright.close();
 
     }
 }
