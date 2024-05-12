@@ -31,7 +31,7 @@ public class LocaterAlma {
         Locator phoneNumber = page.getByRole(TEXTBOX, new Page.GetByRoleOptions().setName("Telefon Numarası"));
         System.out.println("Phone Number= " + phoneNumber.innerText());
         phoneNumber.click();
-        phoneNumber.fill("537-634-22-11");
+        phoneNumber.fill("5376342211");
 
         Thread.sleep(4000);
 
@@ -68,7 +68,7 @@ public class LocaterAlma {
 
         // css and filtet options
         Locator beverage3 = page.locator("div").filter(new Locator.FilterOptions().setHasText("Su & İcecek"));
-        Locator beverage4 = page.locator(".sc-b6b4847f-> .sc-6df7862-1").filter(new Locator.FilterOptions().setHasText("Su & İcecek"));
+        Locator beverage4 = page.locator(".sc-b6b4847f-7 > .sc-6df7862-1").filter(new Locator.FilterOptions().setHasText("Su & İçecek"));
 
         beverage4.click();
 
