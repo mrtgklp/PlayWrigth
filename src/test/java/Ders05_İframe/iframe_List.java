@@ -1,11 +1,14 @@
 package Ders05_İframe;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.Frame;
 
 import java.awt.*;
-import java.util.Locale;
 
-public class İframe_Url {
+import java.awt.Frame.*;
+import java.util.List;
+
+public class iframe_List {
     public static void main(String[] args) {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) dimension.getWidth();
@@ -22,11 +25,16 @@ public class İframe_Url {
         Locator title = page.locator("//h3");
         System.out.println("title " + title.innerText());
 
-        //page closed
-        Locator closed = page.locator("(//button[@type='button'])[16]");
-        closed.click();
+        List<Frame> frames = page.frames();
+        System.out.println("Frames: " + frames.size());
 
-        //Frame Locator
+        for(Frame frame: frames){
+            System.out.println("frame url() = " + frame.url());
+        }
+
+        //Frame By Url
+        Frame frame = page.frameByUrl("about:blank");
+
         FrameLocator frameLocator = page.frameLocator("mce_0_ifr");
 
         Locator body = frameLocator.getByText("Your content goes here.");
@@ -35,18 +43,6 @@ public class İframe_Url {
 
         Locator inpuText = frameLocator.getByLabel("Rich Text Area. Press ALT-0 for help.");
         inpuText.fill("Hello World");
-
-        //page.frameLocator("iframe[title=\"Rich Text Area\"]").getByText("Your content goes here.").click();
-        //page.frameLocator("iframe[title=\"Rich Text Area\"]").getByLabel("Rich Text Area. Press ALT-0 for help.").fill("Hello World");
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        Locator elemantalSeleniumText = page.getByText("Elemantal Selenium");
-        System.out.println(elemantalSeleniumText.innerText());
 
         page.close();
         browser.close();
