@@ -34,13 +34,13 @@ public class OtherLocators {
         System.out.println("3. contınion button " + continuLogin.innerText());
 
         // Css: pick n-th match from the query result
-        Locator loginButton = page.locator(":nth-match(:text('Giriş yap veya kayıt ol'), 1)");
+        Locator loginButton = page.locator(":nth-match(:text('Giriş yap'), 1)");
         System.out.println("4. login button:" + loginButton.innerText());
         loginButton.click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
         //id: data-testid, data-test-id , data-test selectors
-        Locator loginPhoneNumber = page.locator("data-test-id=modal").locator("data-test-id=input");
+        Locator loginPhoneNumber = page.locator("data-testid=modal").locator("data-testid=input");
         System.out.println("5. phone number login " + loginPhoneNumber.innerText());
 
         //xpath locators
