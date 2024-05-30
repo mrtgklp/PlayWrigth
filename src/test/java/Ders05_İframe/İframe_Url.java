@@ -3,7 +3,7 @@ package Ders05_İframe;
 import com.microsoft.playwright.*;
 
 import java.awt.*;
-import java.util.Locale;
+
 
 public class İframe_Url {
     public static void main(String[] args) {
@@ -30,7 +30,7 @@ public class İframe_Url {
         FrameLocator frameLocator = page.frameLocator("mce_0_ifr");
 
         Locator body = frameLocator.getByText("Your content goes here.");
-        body.click();
+        //body.click();
         body.clear();
 
         Locator inpuText = frameLocator.getByLabel("Rich Text Area. Press ALT-0 for help.");
